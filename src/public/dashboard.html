@@ -4,27 +4,32 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Frutos Secos — Panel</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --bg:        #0f0e0c;
-  --surface:   #1a1915;
-  --border:    #2e2c27;
-  --gold:      #c9a84c;
-  --gold-dim:  #8a6e30;
-  --cream:     #f0ead8;
-  --muted:     #6b6557;
-  --green:     #4caf82;
-  --red:       #c95c4c;
+  --bg:        #f7f3ee;
+  --surface:   #ffffff;
+  --surface2:  #fdf9f5;
+  --border:    #e8e0d5;
+  --terra:     #b85c38;
+  --terra-dim: #8f4529;
+  --terra-soft:#f0e4dc;
+  --brown:     #5c3d2e;
+  --muted:     #9e8878;
+  --text:      #2c1f17;
+  --green:     #4a7c59;
+  --green-soft:#e8f2ec;
+  --red:       #c0392b;
+  --red-soft:  #fdecea;
   --radius:    10px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Jost', sans-serif;
   background: var(--bg);
-  color: var(--cream);
+  color: var(--text);
   min-height: 100vh;
 }
 
@@ -35,80 +40,85 @@ body {
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(ellipse 60% 50% at 30% 40%, #2a2010 0%, transparent 70%),
-    radial-gradient(ellipse 40% 60% at 80% 70%, #1a1508 0%, transparent 70%),
+    radial-gradient(ellipse 70% 60% at 20% 50%, #f0e0d0 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at 85% 30%, #ede0d4 0%, transparent 65%),
     var(--bg);
 }
 
 .login-card {
-  width: 380px;
-  padding: 48px 40px 40px;
+  width: 400px;
+  padding: 52px 44px 44px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  box-shadow: 0 32px 64px rgba(0,0,0,.6);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(92,61,46,.1), 0 4px 16px rgba(92,61,46,.06);
   animation: fadeUp .5s ease both;
 }
 
 .login-logo {
-  font-family: 'DM Serif Display', serif;
-  font-size: 28px;
-  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  color: var(--terra);
   margin-bottom: 4px;
-  letter-spacing: -.5px;
 }
 .login-sub {
   font-size: 13px;
   color: var(--muted);
-  margin-bottom: 36px;
+  margin-bottom: 40px;
+  font-weight: 300;
 }
 
-.field { margin-bottom: 18px; }
+.field { margin-bottom: 20px; }
 .field label {
   display: block;
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: .08em;
+  letter-spacing: .09em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 }
 .field input {
   width: 100%;
-  padding: 11px 14px;
+  padding: 12px 15px;
   background: var(--bg);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   border-radius: var(--radius);
-  color: var(--cream);
-  font-family: 'DM Mono', monospace;
+  color: var(--text);
+  font-family: 'Jost', sans-serif;
   font-size: 14px;
   outline: none;
-  transition: border-color .2s;
+  transition: border-color .2s, box-shadow .2s;
 }
-.field input:focus { border-color: var(--gold-dim); }
+.field input:focus {
+  border-color: var(--terra);
+  box-shadow: 0 0 0 3px rgba(184,92,56,.1);
+}
 
 .btn-login {
   width: 100%;
-  padding: 13px;
-  background: var(--gold);
-  color: #0f0e0c;
-  font-family: 'DM Sans', sans-serif;
+  padding: 14px;
+  background: var(--terra);
+  color: #fff;
+  font-family: 'Jost', sans-serif;
   font-weight: 600;
   font-size: 15px;
+  letter-spacing: .03em;
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
   margin-top: 8px;
-  transition: background .2s, transform .1s;
+  transition: background .2s, transform .1s, box-shadow .2s;
+  box-shadow: 0 4px 14px rgba(184,92,56,.3);
 }
-.btn-login:hover { background: #d4b05a; }
+.btn-login:hover { background: var(--terra-dim); box-shadow: 0 6px 18px rgba(184,92,56,.35); }
 .btn-login:active { transform: scale(.98); }
 
 .login-error {
-  margin-top: 14px;
-  padding: 10px 14px;
-  background: rgba(201,92,76,.15);
-  border: 1px solid rgba(201,92,76,.3);
+  margin-top: 16px;
+  padding: 11px 15px;
+  background: var(--red-soft);
+  border: 1px solid rgba(192,57,43,.2);
   border-radius: var(--radius);
   color: var(--red);
   font-size: 13px;
@@ -123,199 +133,269 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 32px;
-  height: 60px;
+  height: 62px;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 1px 8px rgba(92,61,46,.06);
 }
 .topbar-brand {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 20px;
-  color: var(--gold);
+  color: var(--terra);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .topbar-user {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   font-size: 13px;
   color: var(--muted);
 }
-.topbar-user span { color: var(--cream); font-weight: 500; }
+.topbar-user span {
+  color: var(--text);
+  font-weight: 600;
+}
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--terra-soft);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--terra);
+}
 .btn-logout {
-  padding: 6px 14px;
+  padding: 7px 15px;
   background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
   color: var(--muted);
   font-size: 12px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
   cursor: pointer;
-  transition: border-color .2s, color .2s;
+  transition: border-color .2s, color .2s, background .2s;
 }
-.btn-logout:hover { border-color: var(--red); color: var(--red); }
+.btn-logout:hover { border-color: var(--red); color: var(--red); background: var(--red-soft); }
 
 .layout {
   display: flex;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 62px);
 }
 
 .sidebar {
-  width: 220px;
-  padding: 24px 16px;
+  width: 230px;
+  padding: 28px 14px;
   background: var(--surface);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .nav-section {
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: .1em;
+  letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--muted);
-  padding: 12px 10px 6px;
+  padding: 16px 12px 6px;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 9px 12px;
-  border-radius: 8px;
+  gap: 11px;
+  padding: 10px 12px;
+  border-radius: 9px;
   cursor: pointer;
   font-size: 14px;
+  font-weight: 400;
   color: var(--muted);
   transition: background .15s, color .15s;
 }
-.nav-item:hover { background: var(--border); color: var(--cream); }
-.nav-item.active { background: rgba(201,168,76,.12); color: var(--gold); }
-.nav-icon { font-size: 16px; width: 20px; text-align: center; }
+.nav-item:hover { background: var(--bg); color: var(--text); }
+.nav-item.active {
+  background: var(--terra-soft);
+  color: var(--terra);
+  font-weight: 500;
+}
+.nav-icon { font-size: 16px; width: 22px; text-align: center; }
 
 .main {
   flex: 1;
-  padding: 32px;
+  padding: 36px;
   overflow-y: auto;
+  background: var(--bg);
 }
 
 .page { display: none; animation: fadeUp .3s ease both; }
 .page.active { display: block; }
 
 .page-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 26px;
-  color: var(--cream);
-  margin-bottom: 6px;
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--text);
+  margin-bottom: 4px;
 }
-.page-sub { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+.page-sub { font-size: 13px; color: var(--muted); margin-bottom: 30px; font-weight: 300; }
 
+/* Stats */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 .stat-card {
-  padding: 22px 24px;
+  padding: 24px 26px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(92,61,46,.04);
+  position: relative;
+  overflow: hidden;
 }
-.stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 8px; }
-.stat-value { font-family: 'DM Mono', monospace; font-size: 28px; color: var(--cream); }
-.stat-value.gold  { color: var(--gold); }
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--terra);
+  opacity: .6;
+}
+.stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: var(--muted);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.stat-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: var(--text);
+}
+.stat-value.terra { color: var(--terra); }
 .stat-value.green { color: var(--green); }
 
+/* Cards */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 28px;
   margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(92,61,46,.04);
 }
 .card-title {
   font-size: 14px;
   font-weight: 600;
-  color: var(--cream);
-  margin-bottom: 20px;
+  color: var(--text);
+  margin-bottom: 22px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.form-field { display: flex; flex-direction: column; gap: 6px; }
+/* Forms */
+.form-field { display: flex; flex-direction: column; gap: 7px; }
 .form-field label {
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: .07em;
+  letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--muted);
 }
 .form-field input,
 .form-field select {
-  padding: 10px 13px;
+  padding: 11px 14px;
   background: var(--bg);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   border-radius: 8px;
-  color: var(--cream);
-  font-family: 'DM Mono', monospace;
-  font-size: 13px;
+  color: var(--text);
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
   outline: none;
-  transition: border-color .2s;
+  transition: border-color .2s, box-shadow .2s;
 }
 .form-field input:focus,
-.form-field select:focus { border-color: var(--gold-dim); }
+.form-field select:focus {
+  border-color: var(--terra);
+  box-shadow: 0 0 0 3px rgba(184,92,56,.08);
+}
 .form-field select option { background: var(--surface); }
 
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 11px 22px;
+  border-radius: 9px;
   font-size: 13px;
   font-weight: 600;
+  font-family: 'Jost', sans-serif;
   cursor: pointer;
   border: none;
-  transition: opacity .2s, transform .1s;
+  transition: all .2s;
+  letter-spacing: .02em;
 }
 .btn:active { transform: scale(.97); }
-.btn-primary { background: var(--gold); color: #0f0e0c; }
-.btn-primary:hover { opacity: .9; }
+.btn-primary {
+  background: var(--terra);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(184,92,56,.25);
+}
+.btn-primary:hover { background: var(--terra-dim); box-shadow: 0 4px 14px rgba(184,92,56,.3); }
 
-.form-actions { margin-top: 20px; display: flex; gap: 10px; align-items: center; }
+.form-actions { margin-top: 22px; display: flex; gap: 12px; align-items: center; }
 
+/* Table */
 .table-wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
 thead th {
   text-align: left;
-  padding: 10px 14px;
+  padding: 10px 16px;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: .08em;
+  letter-spacing: .09em;
   text-transform: uppercase;
   color: var(--muted);
+  background: var(--surface2);
   border-bottom: 1px solid var(--border);
 }
+thead th:first-child { border-radius: 8px 0 0 0; }
+thead th:last-child  { border-radius: 0 8px 0 0; }
 tbody td {
-  padding: 12px 14px;
-  border-bottom: 1px solid rgba(46,44,39,.5);
-  font-family: 'DM Mono', monospace;
-  color: var(--cream);
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
 }
-tbody tr:hover { background: rgba(255,255,255,.02); }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: var(--surface2); }
 
 .badge {
   display: inline-block;
-  padding: 3px 9px;
+  padding: 4px 10px;
   border-radius: 20px;
   font-size: 11px;
   font-weight: 600;
 }
-.badge-green { background: rgba(76,175,130,.15); color: var(--green); }
-.badge-gold  { background: rgba(201,168,76,.15);  color: var(--gold); }
+.badge-green { background: var(--green-soft); color: var(--green); }
+.badge-terra { background: var(--terra-soft);  color: var(--terra); }
 
+/* Toast */
 .toast {
   position: fixed;
   bottom: 28px;
@@ -326,15 +406,16 @@ tbody tr:hover { background: rgba(255,255,255,.02); }
   font-weight: 500;
   z-index: 9999;
   animation: slideIn .3s ease;
-  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  box-shadow: 0 8px 24px rgba(0,0,0,.15);
+  font-family: 'Jost', sans-serif;
 }
-.toast-ok  { background: var(--green); color: #0f0e0c; }
+.toast-ok  { background: var(--green); color: #fff; }
 .toast-err { background: var(--red);   color: #fff; }
 
 @keyframes fadeUp  { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
 @keyframes slideIn { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:none; } }
 
-.empty { color: var(--muted); font-size: 13px; padding: 24px 0; text-align: center; }
+.empty { color: var(--muted); font-size: 13px; padding: 28px 0; text-align: center; font-style: italic; }
 </style>
 </head>
 <body>
@@ -362,8 +443,9 @@ tbody tr:hover { background: rgba(255,255,255,.02); }
   <div class="topbar">
     <div class="topbar-brand">🌰 Frutos Secos</div>
     <div class="topbar-user">
+      <div class="user-avatar" id="topbar-avatar">J</div>
       Hola, <span id="topbar-name"></span>
-      <button class="btn-logout" onclick="logout()">Cerrar sesión</button>
+      <button class="btn-logout" onclick="logout()">Salir</button>
     </div>
   </div>
 
@@ -387,7 +469,7 @@ tbody tr:hover { background: rgba(255,255,255,.02); }
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-label">Productos</div>
-            <div class="stat-value gold" id="stat-productos">—</div>
+            <div class="stat-value terra" id="stat-productos">—</div>
           </div>
           <div class="stat-card">
             <div class="stat-label">Ventas registradas</div>
@@ -399,7 +481,7 @@ tbody tr:hover { background: rgba(255,255,255,.02); }
           </div>
         </div>
         <div class="card">
-          <div class="card-title">Últimas ventas</div>
+          <div class="card-title">🕒 Últimas ventas</div>
           <div class="table-wrap">
             <table>
               <thead><tr><th>Fecha</th><th>Producto</th><th>Vendedor</th><th>Cantidad</th><th>Ganancia</th></tr></thead>
@@ -414,7 +496,7 @@ tbody tr:hover { background: rgba(255,255,255,.02); }
         <div class="page-title">Productos</div>
         <div class="page-sub">Registra y consulta el catálogo</div>
         <div class="card">
-          <div class="card-title">Nuevo producto</div>
+          <div class="card-title">➕ Nuevo producto</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
             <div class="form-field"><label>Nombre</label><input id="p-nombre" placeholder="Almendras naturales"/></div>
             <div class="form-field"><label>Stock inicial</label><input id="p-stock" type="number" placeholder="100"/></div>
@@ -426,7 +508,7 @@ tbody tr:hover { background: rgba(255,255,255,.02); }
           </div>
         </div>
         <div class="card">
-          <div class="card-title">Catálogo</div>
+          <div class="card-title">📋 Catálogo</div>
           <div class="table-wrap">
             <table>
               <thead><tr><th>Nombre</th><th>Costo base</th><th>Insumos</th><th>Stock</th></tr></thead>
@@ -441,7 +523,7 @@ tbody tr:hover { background: rgba(255,255,255,.02); }
         <div class="page-title">Ventas</div>
         <div class="page-sub">Las ventas se registran a tu nombre automáticamente</div>
         <div class="card">
-          <div class="card-title">Registrar venta</div>
+          <div class="card-title">➕ Registrar venta</div>
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
             <div class="form-field">
               <label>Producto</label>
@@ -455,7 +537,7 @@ tbody tr:hover { background: rgba(255,255,255,.02); }
           </div>
         </div>
         <div class="card">
-          <div class="card-title">Historial</div>
+          <div class="card-title">📋 Historial</div>
           <div class="table-wrap">
             <table>
               <thead><tr><th>Fecha</th><th>Producto</th><th>Vendedor</th><th>Cantidad</th><th>Precio</th><th>Ganancia</th></tr></thead>
@@ -470,7 +552,7 @@ tbody tr:hover { background: rgba(255,255,255,.02); }
         <div class="page-title">Ganancias</div>
         <div class="page-sub">Ganancia total acumulada por vendedor</div>
         <div class="card">
-          <div class="card-title">Por vendedor</div>
+          <div class="card-title">💰 Por vendedor</div>
           <div class="table-wrap">
             <table>
               <thead><tr><th>Vendedor</th><th>Total ganado</th></tr></thead>
@@ -513,6 +595,13 @@ function toast(msg, ok = true) {
 
 function fmt(n) { return '$' + Number(n).toLocaleString('es-CL'); }
 function fmtDate(d) { return new Date(d).toLocaleDateString('es-CL'); }
+
+function getNombreProducto(v) {
+  if (v.productoId && typeof v.productoId === 'object' && v.productoId.nombre) {
+    return v.productoId.nombre;
+  }
+  return v.productoId || '—';
+}
 
 // ── Auth ──────────────────────────────────────────────
 async function doLogin() {
@@ -562,6 +651,7 @@ function showDashboard() {
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('dashboard').style.display = 'block';
   document.getElementById('topbar-name').textContent = currentUser.nombre;
+  document.getElementById('topbar-avatar').textContent = currentUser.nombre[0].toUpperCase();
   loadPage('resumen');
 }
 
@@ -571,13 +661,6 @@ async function loadPage(page) {
   if (page === 'productos') await loadProductos();
   if (page === 'ventas')    { await loadVentas(); await fillProductoSelect(); }
   if (page === 'ganancias') await loadGanancias();
-}
-
-function getNombreProducto(v) {
-  if (v.productoId && typeof v.productoId === 'object' && v.productoId.nombre) {
-    return v.productoId.nombre;
-  }
-  return v.productoId || '—';
 }
 
 async function loadResumen() {
@@ -611,7 +694,7 @@ async function loadProductos() {
       <td>${p.nombre}</td>
       <td>${fmt(p.costoBase)}</td>
       <td>${fmt(p.costoInsumos)}</td>
-      <td><span class="badge badge-gold">${p.stock}</span></td>
+      <td><span class="badge badge-terra">${p.stock}</span></td>
     </tr>`).join('') : '<tr><td colspan="4" class="empty">Sin productos</td></tr>';
 }
 
