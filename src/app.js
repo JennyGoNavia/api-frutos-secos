@@ -13,9 +13,9 @@ const authRoutes      = require('./routes/auth.routes');
 
 app.use(express.json());
 
-// ruta raíz - redirecciona a documentación
+// ruta raíz - servir dashboard
 app.get('/', (req, res) => {
-  res.redirect('/api-docs');
+  res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
 // servir dashboard.html como archivo estático
