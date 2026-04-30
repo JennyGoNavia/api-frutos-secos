@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ debug: false, quiet: true });
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
@@ -13,20 +13,36 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 async function seed() {
-  await mongoose.connect(URI);
-  console.log('Conectado a MongoDB');
+  if (!URI) {
+    console.log('⚠️ MONGO_URI no configurada - saltando seed');
+    return;
+  }
 
-  await User.deleteMany({});
+  try {
+    await mongoose.connect(URI);
+    console.log('Conectado a MongoDB');
 
-  const hash = await bcrypt.hash('admin123', 10);
+    const hash = await bcrypt.hash('admin123', 10);
 
-  await User.insertMany([
-    { nombre: 'Jenny', username: 'jenny', password: hash },
-    { nombre: 'Anto',  username: 'anto',  password: hash },
-  ]);
+    // Crear o actualizar usuarios
+    await User.findOneAndUpdate(
+      { username: 'jenny' },
+      { nombre: 'Jenny', password: hash },
+      { upsert: true, new: true }
+    );
 
-  console.log('✅ Usuarios creados: jenny / admin123  |  anto / admin123');
-  await mongoose.disconnect();
+    await User.findOneAndUpdate(
+      { username: 'anto' },
+      { nombre: 'Anto', password: hash },
+      { upsert: true, new: true }
+    );
+
+    console.log('✅ Usuarios creados/actualizados: jenny / admin123 | anto / admin123');
+  } catch (err) {
+    console.error('❌ Error en seed:', err.message);
+  } finally {
+    await mongoose.disconnect();
+  }
 }
 
-seed().catch(err => { console.error(err); process.exit(1); });
+seed();
