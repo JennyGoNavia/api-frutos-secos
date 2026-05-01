@@ -508,7 +508,25 @@ tbody tr:hover { background: var(--surface2); }
           </div>
         </div>
         <div class="card">
-          <div class="card-title">📋 Catálogo</div>
+          <div class="card-title" style="display:flex;align-items:center;">
+            📋 Catálogo
+            <button id="btn-sort" onclick="toggleSort()" style="
+              margin-left:auto;
+              padding:6px 14px;
+              background:var(--terra-soft);
+              border:1.5px solid var(--terra);
+              border-radius:8px;
+              color:var(--terra);
+              font-size:12px;
+              font-family:inherit;
+              font-weight:600;
+              cursor:pointer;
+              transition:all .2s;
+            " onmouseover="this.style.background='var(--terra)';this.style.color='#fff'"
+               onmouseout="this.style.background='var(--terra-soft)';this.style.color='var(--terra)'">
+              ↑ A → Z
+            </button>
+          </div>
           <div class="table-wrap">
             <table>
               <thead><tr><th>Nombre</th><th>Costo base</th><th>Insumos</th><th>Stock</th><th>Acción</th></tr></thead>
@@ -686,10 +704,15 @@ async function loadResumen() {
     </tr>`).join('') : '<tr><td colspan="5" class="empty">Sin ventas aún</td></tr>';
 }
 
+let sortAsc = true;
+
 async function loadProductos() {
   const data = await api('GET', '/productos');
   const tbody = document.getElementById('tbl-productos');
-  tbody.innerHTML = (data || []).length ? data.map(p => `
+  const sorted = (data || []).sort((a, b) => 
+    sortAsc ? a.nombre.localeCompare(b.nombre, 'es') : b.nombre.localeCompare(a.nombre, 'es')
+  );
+  tbody.innerHTML = sorted.length ? sorted.map(p => `
     <tr>
       <td>${p.nombre}</td>
       <td>${fmt(p.costoBase)}</td>
@@ -712,6 +735,13 @@ async function loadProductos() {
         </button>
       </td>
     </tr>`).join('') : '<tr><td colspan="5" class="empty">Sin productos</td></tr>';
+}
+
+function toggleSort() {
+  sortAsc = !sortAsc;
+  const btn = document.getElementById('btn-sort');
+  btn.textContent = sortAsc ? '↑ A → Z' : '↓ Z → A';
+  loadProductos();
 }
 
 async function eliminarProducto(id) {
