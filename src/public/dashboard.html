@@ -511,8 +511,8 @@ tbody tr:hover { background: var(--surface2); }
           <div class="card-title">📋 Catálogo</div>
           <div class="table-wrap">
             <table>
-              <thead><tr><th>Nombre</th><th>Costo base</th><th>Insumos</th><th>Stock</th></tr></thead>
-              <tbody id="tbl-productos"><tr><td colspan="4" class="empty">Sin productos</td></tr></tbody>
+              <thead><tr><th>Nombre</th><th>Costo base</th><th>Insumos</th><th>Stock</th><th>Acción</th></tr></thead>
+              <tbody id="tbl-productos"><tr><td colspan="5" class="empty">Sin productos</td></tr></tbody>
             </table>
           </div>
         </div>
@@ -695,7 +695,30 @@ async function loadProductos() {
       <td>${fmt(p.costoBase)}</td>
       <td>${fmt(p.costoInsumos)}</td>
       <td><span class="badge badge-terra">${p.stock}</span></td>
-    </tr>`).join('') : '<tr><td colspan="4" class="empty">Sin productos</td></tr>';
+      <td>
+        <button onclick="eliminarProducto('${p._id}')" style="
+          padding:5px 13px;
+          background:transparent;
+          border:1.5px solid var(--red);
+          border-radius:7px;
+          color:var(--red);
+          font-size:12px;
+          font-family:inherit;
+          cursor:pointer;
+          transition:all .2s;
+        " onmouseover="this.style.background='var(--red-soft)'"
+           onmouseout="this.style.background='transparent'">
+          Eliminar
+        </button>
+      </td>
+    </tr>`).join('') : '<tr><td colspan="5" class="empty">Sin productos</td></tr>';
+}
+
+async function eliminarProducto(id) {
+  if (!confirm('¿Estás segura de que quieres eliminar este producto?')) return;
+  const res = await api('DELETE', `/productos/${id}`);
+  if (res && !res.error) { toast('Producto eliminado ✓'); loadProductos(); }
+  else toast(res?.error || 'Error al eliminar', false);
 }
 
 async function loadVentas() {
