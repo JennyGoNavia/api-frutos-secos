@@ -3,31 +3,35 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Frutos Secos "Delivery" — Panel</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<title>Frutos Secos "Delivery"</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --bg:        #f7f3ee;
-  --surface:   #ffffff;
-  --surface2:  #fdf9f5;
-  --border:    #e8e0d5;
-  --terra:     #b85c38;
-  --terra-dim: #8f4529;
-  --terra-soft:#f0e4dc;
-  --brown:     #5c3d2e;
-  --muted:     #9e8878;
-  --text:      #2c1f17;
-  --green:     #4a7c59;
-  --green-soft:#e8f2ec;
-  --red:       #c0392b;
-  --red-soft:  #fdecea;
-  --radius:    10px;
+  --bg:          #fff8ef;
+  --surface:     #ffffff;
+  --surface2:    #fffbf5;
+  --border:      #fde8c0;
+  --orange:      #f07b2a;
+  --orange-dim:  #c85e10;
+  --orange-soft: #fff0de;
+  --brown:       #7a3e10;
+  --yellow:      #f5c220;
+  --yellow-soft: #fff9e0;
+  --muted:       #b08060;
+  --text:        #3d1f08;
+  --green:       #27a85a;
+  --green-soft:  #d6f5e3;
+  --red:         #e03333;
+  --red-soft:    #ffe4e4;
+  --purple:      #9b59b6;
+  --purple-soft: #f0e6f8;
+  --radius:      16px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Nunito', sans-serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
@@ -40,89 +44,109 @@ body {
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(ellipse 70% 60% at 20% 50%, #f0e0d0 0%, transparent 65%),
-    radial-gradient(ellipse 50% 70% at 85% 30%, #ede0d4 0%, transparent 65%),
+    radial-gradient(ellipse 80% 60% at 10% 10%, #ffe8b0 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 90% 90%, #ffd6a0 0%, transparent 60%),
     var(--bg);
 }
 
 .login-card {
-  width: 400px;
-  padding: 52px 44px 44px;
+  width: 420px;
+  padding: 48px 44px 44px;
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(92,61,46,.1), 0 4px 16px rgba(92,61,46,.06);
+  border: 2px solid var(--border);
+  border-radius: 28px;
+  box-shadow: 0 8px 40px rgba(240,123,42,.15), 0 2px 8px rgba(240,123,42,.08);
   animation: fadeUp .5s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--orange) 0%, var(--yellow) 50%, var(--orange) 100%);
+  border-radius: 28px 28px 0 0;
 }
 
 .login-logo {
-   text-align: center;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Fredoka One', cursive;
   font-size: 30px;
-  color: var(--terra);
+  color: var(--orange);
   margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.login-logo img {
+  width: 56px; height: 56px;
+  object-fit: contain;
+  border-radius: 12px;
 }
 .login-sub {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
-  margin-bottom: 40px;
-  font-weight: 300;
+  margin-bottom: 36px;
+  font-weight: 500;
 }
 
-.field { margin-bottom: 20px; }
+.field { margin-bottom: 18px; }
 .field label {
   display: block;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .09em;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .07em;
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 8px;
 }
 .field input {
   width: 100%;
-  padding: 12px 15px;
+  padding: 13px 16px;
   background: var(--bg);
-  border: 1.5px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: var(--radius);
   color: var(--text);
-  font-family: 'Jost', sans-serif;
-  font-size: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
   outline: none;
   transition: border-color .2s, box-shadow .2s;
 }
 .field input:focus {
-  border-color: var(--terra);
-  box-shadow: 0 0 0 3px rgba(184,92,56,.1);
+  border-color: var(--orange);
+  box-shadow: 0 0 0 4px rgba(240,123,42,.1);
 }
+.field input::placeholder { color: var(--muted); opacity: .6; font-weight: 500; }
 
 .btn-login {
   width: 100%;
-  padding: 14px;
-  background: var(--terra);
+  padding: 15px;
+  background: var(--orange);
   color: #fff;
-  font-family: 'Jost', sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: .03em;
+  font-family: 'Fredoka One', cursive;
+  font-size: 18px;
+  letter-spacing: .04em;
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
   margin-top: 8px;
-  transition: background .2s, transform .1s, box-shadow .2s;
-  box-shadow: 0 4px 14px rgba(184,92,56,.3);
+  transition: all .2s;
+  box-shadow: 0 4px 16px rgba(240,123,42,.35);
 }
-.btn-login:hover { background: var(--terra-dim); box-shadow: 0 6px 18px rgba(184,92,56,.35); }
+.btn-login:hover { background: var(--orange-dim); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(240,123,42,.4); }
 .btn-login:active { transform: scale(.98); }
 
 .login-error {
   margin-top: 16px;
-  padding: 11px 15px;
+  padding: 12px 16px;
   background: var(--red-soft);
-  border: 1px solid rgba(192,57,43,.2);
+  border: 2px solid rgba(224,51,51,.2);
   border-radius: var(--radius);
   color: var(--red);
   font-size: 13px;
+  font-weight: 600;
   display: none;
 }
 
@@ -130,74 +154,78 @@ body {
 #dashboard { display: none; }
 
 .topbar {
-  overflow: visible;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 32px;
+  padding: 0 28px;
   height: 100px;
   background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 1px 8px rgba(92,61,46,.06);
+  box-shadow: 0 2px 12px rgba(240,123,42,.08);
+  overflow: visible;
 }
 .topbar-brand {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  color: var(--terra);
+  font-family: 'Fredoka One', cursive;
+  font-size: 22px;
+  color: var(--orange);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+}
+.topbar-brand img {
+  width: 80px; height: 80px;
+  object-fit: contain;
+  border-radius: 12px;
 }
 .topbar-user {
   display: flex;
   align-items: center;
   gap: 14px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
-}
-.topbar-user span {
-  color: var(--text);
   font-weight: 600;
 }
+.topbar-user span { color: var(--text); font-weight: 800; }
 .user-avatar {
-  width: 32px;
-  height: 32px;
-  background: var(--terra-soft);
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, var(--orange) 0%, var(--yellow) 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--terra);
+  font-size: 16px;
+  font-weight: 900;
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(240,123,42,.3);
+  font-family: 'Fredoka One', cursive;
 }
 .btn-logout {
-  padding: 7px 15px;
+  padding: 8px 18px;
   background: transparent;
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
   color: var(--muted);
-  font-size: 12px;
-  font-family: 'Jost', sans-serif;
-  font-weight: 500;
+  font-size: 13px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
   cursor: pointer;
-  transition: border-color .2s, color .2s, background .2s;
+  transition: all .2s;
 }
 .btn-logout:hover { border-color: var(--red); color: var(--red); background: var(--red-soft); }
 
 .layout {
   display: flex;
-  min-height: calc(100vh - 62px);
+  min-height: calc(100vh - 100px);
 }
 
 .sidebar {
   width: 230px;
-  padding: 28px 14px;
+  padding: 24px 12px;
   background: var(--surface);
-  border-right: 1px solid var(--border);
+  border-right: 2px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -205,50 +233,50 @@ body {
 
 .nav-section {
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 900;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--muted);
-  padding: 16px 12px 6px;
+  padding: 14px 12px 6px;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 11px;
-  padding: 10px 12px;
-  border-radius: 9px;
+  gap: 12px;
+  padding: 11px 14px;
+  border-radius: 14px;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 600;
   color: var(--muted);
-  transition: background .15s, color .15s;
+  transition: all .2s;
 }
-.nav-item:hover { background: var(--bg); color: var(--text); }
+.nav-item:hover { background: var(--orange-soft); color: var(--orange-dim); }
 .nav-item.active {
-  background: var(--terra-soft);
-  color: var(--terra);
-  font-weight: 500;
+  background: var(--orange);
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(240,123,42,.25);
 }
-.nav-icon { font-size: 16px; width: 22px; text-align: center; }
+.nav-icon { font-size: 18px; width: 24px; text-align: center; }
 
 .main {
   flex: 1;
-  padding: 36px;
+  padding: 32px;
   overflow-y: auto;
-  background: var(--bg);
 }
 
 .page { display: none; animation: fadeUp .3s ease both; }
 .page.active { display: block; }
 
 .page-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  color: var(--text);
+  font-family: 'Fredoka One', cursive;
+  font-size: 34px;
+  color: var(--orange);
   margin-bottom: 4px;
 }
-.page-sub { font-size: 13px; color: var(--muted); margin-bottom: 30px; font-weight: 300; }
+.page-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; font-weight: 500; }
 
 /* Stats */
 .stats-grid {
@@ -260,52 +288,58 @@ body {
 .stat-card {
   padding: 24px 26px;
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: 0 2px 8px rgba(92,61,46,.04);
+  box-shadow: 0 2px 8px rgba(240,123,42,.06);
+  transition: transform .2s, box-shadow .2s;
   position: relative;
   overflow: hidden;
 }
-.stat-card::before {
+.stat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(240,123,42,.12); }
+.stat-card::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--terra);
-  opacity: .6;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
 }
+.stat-card:nth-child(1)::after { background: var(--orange); }
+.stat-card:nth-child(2)::after { background: var(--purple); }
+.stat-card:nth-child(3)::after { background: var(--green); }
+
 .stat-label {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: .09em;
   color: var(--muted);
   margin-bottom: 10px;
-  font-weight: 600;
+  font-weight: 800;
 }
 .stat-value {
-  font-family: 'Playfair Display', serif;
-  font-size: 32px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 40px;
   color: var(--text);
+  line-height: 1;
 }
-.stat-value.terra { color: var(--terra); }
-.stat-value.green { color: var(--green); }
+.stat-value.orange { color: var(--orange); }
+.stat-value.green  { color: var(--green); }
+.stat-value.purple { color: var(--purple); }
 
 /* Cards */
 .card {
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: var(--radius);
-  padding: 28px;
+  padding: 26px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(92,61,46,.04);
+  box-shadow: 0 2px 8px rgba(240,123,42,.05);
 }
 .card-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 22px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px;
+  color: var(--brown);
+  margin-bottom: 20px;
   padding-bottom: 14px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px dashed var(--border);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -314,9 +348,9 @@ body {
 /* Forms */
 .form-field { display: flex; flex-direction: column; gap: 7px; }
 .form-field label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .08em;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .07em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -324,18 +358,19 @@ body {
 .form-field select {
   padding: 11px 14px;
   background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
   color: var(--text);
-  font-family: 'Jost', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 14px;
+  font-weight: 600;
   outline: none;
   transition: border-color .2s, box-shadow .2s;
 }
 .form-field input:focus,
 .form-field select:focus {
-  border-color: var(--terra);
-  box-shadow: 0 0 0 3px rgba(184,92,56,.08);
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(240,123,42,.1);
 }
 .form-field select option { background: var(--surface); }
 
@@ -343,81 +378,78 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 11px 22px;
-  border-radius: 9px;
-  font-size: 13px;
-  font-weight: 600;
-  font-family: 'Jost', sans-serif;
+  padding: 11px 24px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
   cursor: pointer;
   border: none;
   transition: all .2s;
-  letter-spacing: .02em;
 }
 .btn:active { transform: scale(.97); }
 .btn-primary {
-  background: var(--terra);
+  background: var(--orange);
   color: #fff;
-  box-shadow: 0 3px 10px rgba(184,92,56,.25);
+  box-shadow: 0 4px 14px rgba(240,123,42,.3);
 }
-.btn-primary:hover { background: var(--terra-dim); box-shadow: 0 4px 14px rgba(184,92,56,.3); }
+.btn-primary:hover { background: var(--orange-dim); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(240,123,42,.35); }
 
-.form-actions { margin-top: 22px; display: flex; gap: 12px; align-items: center; }
+.form-actions { margin-top: 20px; }
 
 /* Table */
 .table-wrap { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
 thead th {
   text-align: left;
   padding: 10px 16px;
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 900;
   letter-spacing: .09em;
   text-transform: uppercase;
   color: var(--muted);
   background: var(--surface2);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--border);
 }
-thead th:first-child { border-radius: 8px 0 0 0; }
-thead th:last-child  { border-radius: 0 8px 0 0; }
 tbody td {
   padding: 13px 16px;
   border-bottom: 1px solid var(--border);
-  color: var(--text);
+  font-weight: 600;
 }
 tbody tr:last-child td { border-bottom: none; }
-tbody tr:hover { background: var(--surface2); }
+tbody tr:hover { background: var(--orange-soft); }
 
 .badge {
   display: inline-block;
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 20px;
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 800;
 }
-.badge-green { background: var(--green-soft); color: var(--green); }
-.badge-terra { background: var(--terra-soft);  color: var(--terra); }
+.badge-green  { background: var(--green-soft);  color: var(--green); }
+.badge-orange { background: var(--orange-soft); color: var(--orange); }
+.badge-yellow { background: var(--yellow-soft); color: #b07800; }
 
 /* Toast */
 .toast {
   position: fixed;
-  bottom: 28px;
-  right: 28px;
-  padding: 13px 20px;
+  bottom: 28px; right: 28px;
+  padding: 14px 22px;
   border-radius: var(--radius);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 800;
   z-index: 9999;
   animation: slideIn .3s ease;
-  box-shadow: 0 8px 24px rgba(0,0,0,.15);
-  font-family: 'Jost', sans-serif;
+  box-shadow: 0 8px 28px rgba(0,0,0,.15);
+  font-family: 'Nunito', sans-serif;
 }
 .toast-ok  { background: var(--green); color: #fff; }
 .toast-err { background: var(--red);   color: #fff; }
 
 @keyframes fadeUp  { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
-@keyframes slideIn { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:none; } }
+@keyframes slideIn { from { opacity:0; transform:translateX(24px); } to { opacity:1; transform:none; } }
 
-.empty { color: var(--muted); font-size: 13px; padding: 28px 0; text-align: center; font-style: italic; }
+.empty { color: var(--muted); font-size: 14px; padding: 28px 0; text-align: center; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -425,11 +457,11 @@ tbody tr:hover { background: var(--surface2); }
 <!-- LOGIN -->
 <div id="login-screen">
   <div class="login-card">
-<div class="login-logo">
-  <img src="Log.png" style="width:120px;height:120px;object-fit:contain;display:block;margin:0 auto 10px;border-radius:12px;"/>
-  Frutos Secos "Delivery"
-</div>
-    <div class="login-sub">Panel de gestión interno</div>
+    <div class="login-logo">
+      <img src="Log.png" alt="Logo"/>
+      Frutos Secos "Delivery"
+    </div>
+    <div class="login-sub">Panel de gestión interno 🥜</div>
     <div class="field">
       <label>Usuario</label>
       <input id="inp-user" type="text" placeholder="jenny / anto" autocomplete="username"/>
@@ -438,7 +470,7 @@ tbody tr:hover { background: var(--surface2); }
       <label>Contraseña</label>
       <input id="inp-pass" type="password" placeholder="••••••••" autocomplete="current-password"/>
     </div>
-    <button class="btn-login" onclick="doLogin()">Ingresar</button>
+    <button class="btn-login" onclick="doLogin()">¡Ingresar! 🚀</button>
     <div class="login-error" id="login-error"></div>
   </div>
 </div>
@@ -446,10 +478,13 @@ tbody tr:hover { background: var(--surface2); }
 <!-- DASHBOARD -->
 <div id="dashboard">
   <div class="topbar">
-    <<div class="topbar-brand"><img src="Log.png" style="width:90px;height:90px;object-fit:contain;vertical-align:middle;margin-right:8px;border-radius:6px;"/> Frutos Secos "Delivery"</div>
+    <div class="topbar-brand">
+      <img src="Log.png" alt="Logo"/>
+      Frutos Secos "Delivery"
+    </div>
     <div class="topbar-user">
+      Hola, <span id="topbar-name"></span> 👋
       <div class="user-avatar" id="topbar-avatar">J</div>
-      Hola, <span id="topbar-name"></span>
       <button class="btn-logout" onclick="logout()">Salir</button>
     </div>
   </div>
@@ -469,16 +504,16 @@ tbody tr:hover { background: var(--surface2); }
 
       <!-- RESUMEN -->
       <div class="page active" id="page-resumen">
-        <div class="page-title">Resumen</div>
-        <div class="page-sub">Vista general del negocio</div>
+        <div class="page-title">📊 Resumen</div>
+        <div class="page-sub">Vista general del negocio en tiempo real</div>
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-label">Productos</div>
-            <div class="stat-value terra" id="stat-productos">—</div>
+            <div class="stat-value orange" id="stat-productos">—</div>
           </div>
           <div class="stat-card">
             <div class="stat-label">Ventas registradas</div>
-            <div class="stat-value" id="stat-ventas">—</div>
+            <div class="stat-value purple" id="stat-ventas">—</div>
           </div>
           <div class="stat-card">
             <div class="stat-label">Ganancia total</div>
@@ -490,7 +525,7 @@ tbody tr:hover { background: var(--surface2); }
           <div class="table-wrap">
             <table>
               <thead><tr><th>Fecha</th><th>Producto</th><th>Vendedor</th><th>Cantidad</th><th>Ganancia</th></tr></thead>
-              <tbody id="tbl-ultimas"><tr><td colspan="5" class="empty">Sin ventas aún</td></tr></tbody>
+              <tbody id="tbl-ultimas"><tr><td colspan="5" class="empty">Sin ventas aún 🥜</td></tr></tbody>
             </table>
           </div>
         </div>
@@ -498,8 +533,8 @@ tbody tr:hover { background: var(--surface2); }
 
       <!-- PRODUCTOS -->
       <div class="page" id="page-productos">
-        <div class="page-title">Productos</div>
-        <div class="page-sub">Registra y consulta el catálogo</div>
+        <div class="page-title">📦 Productos</div>
+        <div class="page-sub">Registra y consulta el catálogo de productos</div>
         <div class="card">
           <div class="card-title">➕ Nuevo producto</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
@@ -517,25 +552,25 @@ tbody tr:hover { background: var(--surface2); }
             📋 Catálogo
             <button id="btn-sort" onclick="toggleSort()" style="
               margin-left:auto;
-              padding:6px 14px;
-              background:var(--terra-soft);
-              border:1.5px solid var(--terra);
-              border-radius:8px;
-              color:var(--terra);
-              font-size:12px;
-              font-family:inherit;
-              font-weight:600;
+              padding:7px 16px;
+              background:var(--orange-soft);
+              border:2px solid var(--orange);
+              border-radius:10px;
+              color:var(--orange);
+              font-size:13px;
+              font-family:'Nunito',sans-serif;
+              font-weight:800;
               cursor:pointer;
               transition:all .2s;
-            " onmouseover="this.style.background='var(--terra)';this.style.color='#fff'"
-               onmouseout="this.style.background='var(--terra-soft)';this.style.color='var(--terra)'">
+            " onmouseover="this.style.background='var(--orange)';this.style.color='#fff'"
+               onmouseout="this.style.background='var(--orange-soft)';this.style.color='var(--orange)'">
               ↑ A → Z
             </button>
           </div>
           <div class="table-wrap">
             <table>
               <thead><tr><th>Nombre</th><th>Costo base</th><th>Insumos</th><th>Stock</th><th>Acción</th></tr></thead>
-              <tbody id="tbl-productos"><tr><td colspan="5" class="empty">Sin productos</td></tr></tbody>
+              <tbody id="tbl-productos"><tr><td colspan="5" class="empty">Sin productos 📦</td></tr></tbody>
             </table>
           </div>
         </div>
@@ -543,7 +578,7 @@ tbody tr:hover { background: var(--surface2); }
 
       <!-- VENTAS -->
       <div class="page" id="page-ventas">
-        <div class="page-title">Ventas</div>
+        <div class="page-title">🛒 Ventas</div>
         <div class="page-sub">Las ventas se registran a tu nombre automáticamente</div>
         <div class="card">
           <div class="card-title">➕ Registrar venta</div>
@@ -564,7 +599,7 @@ tbody tr:hover { background: var(--surface2); }
           <div class="table-wrap">
             <table>
               <thead><tr><th>Fecha</th><th>Producto</th><th>Vendedor</th><th>Cantidad</th><th>Precio</th><th>Ganancia</th></tr></thead>
-              <tbody id="tbl-ventas"><tr><td colspan="6" class="empty">Sin ventas</td></tr></tbody>
+              <tbody id="tbl-ventas"><tr><td colspan="6" class="empty">Sin ventas 🛒</td></tr></tbody>
             </table>
           </div>
         </div>
@@ -572,14 +607,14 @@ tbody tr:hover { background: var(--surface2); }
 
       <!-- GANANCIAS -->
       <div class="page" id="page-ganancias">
-        <div class="page-title">Ganancias</div>
+        <div class="page-title">💰 Ganancias</div>
         <div class="page-sub">Ganancia total acumulada por vendedor</div>
         <div class="card">
-          <div class="card-title">💰 Por vendedor</div>
+          <div class="card-title">📊 Por vendedor</div>
           <div class="table-wrap">
             <table>
               <thead><tr><th>Vendedor</th><th>Total ganado</th></tr></thead>
-              <tbody id="tbl-ganancias"><tr><td colspan="2" class="empty">Sin datos</td></tr></tbody>
+              <tbody id="tbl-ganancias"><tr><td colspan="2" class="empty">Sin datos 💰</td></tr></tbody>
             </table>
           </div>
         </div>
@@ -613,16 +648,14 @@ function toast(msg, ok = true) {
   t.className = `toast ${ok ? 'toast-ok' : 'toast-err'}`;
   t.textContent = msg;
   document.body.appendChild(t);
-  setTimeout(() => t.remove(), 3000);
+  setTimeout(() => t.remove(), 3200);
 }
 
 function fmt(n) { return '$' + Number(n).toLocaleString('es-CL'); }
 function fmtDate(d) { return new Date(d).toLocaleDateString('es-CL'); }
 
 function getNombreProducto(v) {
-  if (v.productoId && typeof v.productoId === 'object' && v.productoId.nombre) {
-    return v.productoId.nombre;
-  }
+  if (v.productoId && typeof v.productoId === 'object' && v.productoId.nombre) return v.productoId.nombre;
   return v.productoId || '—';
 }
 
@@ -706,7 +739,7 @@ async function loadResumen() {
       <td>${v.vendedorId}</td>
       <td>${v.cantidad}</td>
       <td><span class="badge badge-green">${fmt(v.ganancia)}</span></td>
-    </tr>`).join('') : '<tr><td colspan="5" class="empty">Sin ventas aún</td></tr>';
+    </tr>`).join('') : '<tr><td colspan="5" class="empty">Sin ventas aún 🥜</td></tr>';
 }
 
 let sortAsc = true;
@@ -714,7 +747,7 @@ let sortAsc = true;
 async function loadProductos() {
   const data = await api('GET', '/productos');
   const tbody = document.getElementById('tbl-productos');
-  const sorted = (data || []).sort((a, b) => 
+  const sorted = (data || []).sort((a, b) =>
     sortAsc ? a.nombre.localeCompare(b.nombre, 'es') : b.nombre.localeCompare(a.nombre, 'es')
   );
   tbody.innerHTML = sorted.length ? sorted.map(p => `
@@ -722,24 +755,25 @@ async function loadProductos() {
       <td>${p.nombre}</td>
       <td>${fmt(p.costoBase)}</td>
       <td>${fmt(p.costoInsumos)}</td>
-      <td><span class="badge badge-terra">${p.stock}</span></td>
+      <td><span class="badge badge-orange">${p.stock}</span></td>
       <td>
         <button onclick="eliminarProducto('${p._id}')" style="
-          padding:5px 13px;
+          padding:5px 14px;
           background:transparent;
-          border:1.5px solid var(--red);
-          border-radius:7px;
+          border:2px solid var(--red);
+          border-radius:9px;
           color:var(--red);
-          font-size:12px;
-          font-family:inherit;
+          font-size:13px;
+          font-family:'Nunito',sans-serif;
+          font-weight:700;
           cursor:pointer;
           transition:all .2s;
         " onmouseover="this.style.background='var(--red-soft)'"
            onmouseout="this.style.background='transparent'">
-          Eliminar
+          🗑 Eliminar
         </button>
       </td>
-    </tr>`).join('') : '<tr><td colspan="5" class="empty">Sin productos</td></tr>';
+    </tr>`).join('') : '<tr><td colspan="5" class="empty">Sin productos 📦</td></tr>';
 }
 
 function toggleSort() {
@@ -767,7 +801,7 @@ async function loadVentas() {
       <td>${v.cantidad}</td>
       <td>${fmt(v.precioVenta)}</td>
       <td><span class="badge badge-green">${fmt(v.ganancia)}</span></td>
-    </tr>`).join('') : '<tr><td colspan="6" class="empty">Sin ventas</td></tr>';
+    </tr>`).join('') : '<tr><td colspan="6" class="empty">Sin ventas 🛒</td></tr>';
 }
 
 async function loadGanancias() {
@@ -777,7 +811,7 @@ async function loadGanancias() {
     <tr>
       <td>${g._id}</td>
       <td><span class="badge badge-green">${fmt(g.totalGanancia)}</span></td>
-    </tr>`).join('') : '<tr><td colspan="2" class="empty">Sin datos</td></tr>';
+    </tr>`).join('') : '<tr><td colspan="2" class="empty">Sin datos 💰</td></tr>';
 }
 
 async function fillProductoSelect() {
@@ -797,7 +831,7 @@ async function crearProducto() {
   };
   if (!body.nombre) { toast('Ingresa un nombre', false); return; }
   const res = await api('POST', '/productos', body);
-  if (res && !res.error) { toast('Producto registrado ✓'); loadProductos(); }
+  if (res && !res.error) { toast('¡Producto registrado! ✓'); loadProductos(); }
   else toast(res?.error || 'Error al registrar', false);
 }
 
@@ -811,7 +845,7 @@ async function crearVenta() {
   if (!body.cantidad)   { toast('Ingresa la cantidad', false); return; }
   if (!body.precioVenta){ toast('Ingresa el precio de venta', false); return; }
   const res = await api('POST', '/ventas', body);
-  if (res && !res.error) { toast('Venta registrada ✓'); loadVentas(); }
+  if (res && !res.error) { toast('¡Venta registrada! ✓'); loadVentas(); }
   else toast(res?.error || 'Error al registrar', false);
 }
 
