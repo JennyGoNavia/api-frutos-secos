@@ -103,5 +103,37 @@ router.get('/ganancias', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+router.put('/:id', async (req, res) => {
+  try {
+    const { cantidad, precioVenta } = req.body;
+    const venta = await Venta.findById(req.params.id).populate('productoId');
+    if (!venta) return res.status(404).json({ error: 'Venta no encontrada' });
+
+    // recalcular ganancia
+    const producto = venta.productoId;
+    const costTotal = (producto.costoBase + producto.costoInsumos) * cantidad;
+    const ganancia  = (precioVenta * cantidad) - costTotal;
+
+    venta.cantidad    = cantidad;
+    venta.precioVenta = precioVenta;
+    venta.ganancia    = ganancia;
+    await venta.save();
+
+    res.json(venta);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// Eliminar venta
+router.delete('/:id', async (req, res) => {
+  try {
+    const venta = await Venta.findByIdAndDelete(req.params.id);
+    if (!venta) return res.status(404).json({ error: 'Venta no encontrada' });
+    res.json({ mensaje: 'Venta eliminada' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 module.exports = router;
