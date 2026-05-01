@@ -48,7 +48,7 @@ body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--te
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px;
   background: linear-gradient(90deg, var(--orange) 0%, var(--yellow) 50%, var(--orange) 100%);
 }
-.login-logo { font-family: 'Fredoka One', cursive; font-size: 28px; color: var(--orange); margin-bottom: 4px; display: flex; align-items: center; gap: 10px; }
+.login-logo { text-align: center; font-family: 'Fredoka One', cursive; font-size: 28px; color: var(--orange); margin-bottom: 4px; display: flex; align-items: center; gap: 10px; }
 .login-logo img { width: 56px; height: 56px; object-fit: contain; border-radius: 12px; }
 .login-sub { font-size: 14px; color: var(--muted); margin-bottom: 36px; font-weight: 500; }
 .field { margin-bottom: 18px; }
@@ -156,7 +156,10 @@ tbody tr:hover { background: var(--orange-soft); }
 <!-- LOGIN -->
 <div id="login-screen">
   <div class="login-card">
-    <div class="login-logo"><img src="Log.png" alt="Logo"/> Frutos Secos "Delivery"</div>
+    <div class="login-logo">
+  <img src="Log.png" style="width:120px;height:120px;object-fit:contain;display:block;margin:0 auto 10px;border-radius:12px;"/>
+  Frutos Secos "Delivery"
+</div>
     <div class="login-sub">Panel de gestión interno 🥜</div>
     <div class="field"><label>Usuario</label><input id="inp-user" type="text" placeholder="jenny / anto" autocomplete="username"/></div>
     <div class="field"><label>Contraseña</label><input id="inp-pass" type="password" placeholder="••••••••"/></div>
